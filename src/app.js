@@ -11,6 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/health", (req, res) => res.json({ status: "ok" }));
+app.get("/", (req, res) =>
+  res.json({ name: "Event Management API", status: "running", health: "/health", events: "/events" })
+);
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/events", require("./routes/eventRoutes"));
 app.use("/admin", require("./routes/adminRoutes"));
